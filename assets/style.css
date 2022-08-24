@@ -91,6 +91,7 @@ body {
 .deck-container .deck,
 .deck-container .last-card {
     background-size: cover;
+    background-repeat: no-repeat;
     height: 190px;
     width: 130px;
 }
@@ -140,4 +141,8 @@ body {
 
 .d-none {
     display: none;
+}
+
+.done {
+    color: red !important;
 }

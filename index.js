@@ -4,6 +4,7 @@ const diffContainer = document.querySelector('.diff-container');
 const deckContainer = document.querySelector('.deck-container');
 const shuffleButton = document.querySelector('.shuffle-button');
 const currentState = document.querySelector('.current-state');
+alert('сначала нажмите на карту, затем начните уровень и игру. затем повторите это снова');
 
 const ancients = {
     azathoth: './Azathoth.png',
@@ -95,6 +96,7 @@ const ancientsData = [
 ]
 
 let i
+let id = 0
 images.forEach((x, i) => {
     x.addEventListener("click", () => {
         shuffleButton.classList.remove("d-none")
@@ -114,57 +116,81 @@ images.forEach((x, i) => {
                     shuffleButton.classList.add("d-none")
                     const data = ancientsData[i]
 
-                    let arrLine = []
-                    let arrFirst = []
-                    let arrSecond = []
-                    let arrThird = []
-
-                    arrFirst.push(data.firstStage.greenCards)
-                    arrFirst.push(data.firstStage.brownCards)
-                    arrFirst.push(data.firstStage.blueCards)
-
-                    arrSecond.push(data.secondStage.greenCards)
-                    arrSecond.push(data.secondStage.brownCards)
-                    arrSecond.push(data.secondStage.blueCards)
-
-                    arrThird.push(data.thirdStage.greenCards)
-                    arrThird.push(data.thirdStage.brownCards)
-                    arrThird.push(data.thirdStage.blueCards)
-
-                    arrLine.push(arrFirst)
-                    arrLine.push(arrSecond)
-                    arrLine.push(arrThird)
-
                     currentState.innerHTML = `
-                    <div class="stage-container"><span class="stage-text ">Первая стадия</span>
+                    <div class="stage-container"><span class="stage-text">Первая стадия</span>
                         <div class="dots-container">
-                            <div class="dot green">${arrLine[0][0]}</div>
-                            <div class="dot brown">${arrLine[0][1]}</div>
-                            <div class="dot blue">${arrLine[0][2]}</div>
+                            <div class="dot green">${data.firstStage.greenCards}</div>
+                            <div class="dot brown">${data.firstStage.brownCards}</div>
+                            <div class="dot blue">${data.firstStage.blueCards}</div>
                         </div>
                      </div>
-                    <div class="stage-container"><span class="stage-text ">Вторая стадия</span>
+                    <div class="stage-container"><span class="stage-text">Вторая стадия</span>
                         <div class="dots-container">
-                            <div class="dot green">${arrLine[1][0]}</div>
-                            <div class="dot brown">${arrLine[1][1]}</div>
-                            <div class="dot blue">${arrLine[1][2]}</div>
+                            <div class="dot green">${data.secondStage.greenCards}</div>
+                            <div class="dot brown">${data.secondStage.brownCards}</div>
+                            <div class="dot blue">${data.secondStage.blueCards}</div>
                         </div>
                     </div>
-                    <div class="stage-container"><span class="stage-text ">Третья стадия</span>
+                    <div class="stage-container"><span class="stage-text">Третья стадия</span>
                         <div class="dots-container">
-                            <div class="dot green">${arrLine[2][0]}</div>
-                            <div class="dot brown">${arrLine[2][1]}</div>
-                            <div class="dot blue">${arrLine[2][2]}</div>
+                            <div class="dot green">${data.thirdStage.greenCards}</div>
+                            <div class="dot brown">${data.thirdStage.brownCards}</div>
+                            <div class="dot blue">${data.thirdStage.blueCards}</div>
                         </div>
                     </div>
-                    <div class="deck" style="background: url(./assets/mythicCardBackground.png);></div>
+                    <div class="deck" style="background: url(./assets/mythicCardBackground.png)"></div>
                     <div class="last-card" ></div>
                     `
                     const deck = document.querySelector('.deck');
+
                     deck.addEventListener('click', () => {
+                        const lastCard = document.querySelector('.last-card');
+                        const stageText = document.querySelectorAll('.stage-text');
                         i = Math.floor(Math.random() * 3)
-                        
-                        // add your code
+                        id = Math.floor(Math.random() + 1) * 12
+                        const dot = document.querySelectorAll('.dot');
+
+                        console.log();
+                        const names = dot[i].getAttribute("class").split(" ")[1]
+                        lastCard.style.background = `url(./assets/MythicCards/${names}/${names}${id}.png)`
+                        lastCard.style.backgroundSize = "cover"
+
+                        if (dot[0].textContent > 0 || dot[1].textContent > 0 || dot[2].textContent > 0) {
+                            if (dot[i].textContent > 0) {
+                                dot[i].textContent = dot[i].textContent - 1
+                            } else if (dot[i + 1] > 0) {
+                                dot[i].textContent = dot[i].textContent - 1
+                            } else if (dot[i - 1] > 0) {
+                                dot[i].textContent = dot[i].textContent - 1
+                            }
+                            if (dot[0].textContent == 0 && dot[1].textContent == 0 && dot[2].textContent == 0) {
+                                stageText[0].classList.add("done")
+                            }
+                        } else if (dot[3].textContent > 0 || dot[4].textContent > 0 || dot[5].textContent > 0) {
+                            if (dot[i + 3].textContent > 0) {
+                                dot[i + 3].textContent = dot[i + 3].textContent - 1
+                            } else if (dot[i + 3 + 1] > 0) {
+                                dot[i + 3].textContent = dot[i + 3].textContent - 1
+                            } else if (dot[i + 3 - 1] > 0) {
+                                dot[i + 3].textContent = dot[i + 3].textContent - 1
+                            }
+                            if (dot[3].textContent == 0 && dot[4].textContent == 0 && dot[5].textContent == 0) {
+                                stageText[1].classList.add("done")
+                            }
+                        } else if (dot[6].textContent > 0 || dot[7].textContent > 0 || dot[8].textContent > 0) {
+                            if (dot[i + 6].textContent > 0) {
+                                dot[i + 6].textContent = dot[i + 6].textContent - 1
+                            } else if (dot[i + 6 + 1] > 0) {
+                                dot[i + 6].textContent = dot[i + 6].textContent - 1
+                            } else if (dot[i + 6 - 1] > 0) {
+                                dot[i + 6].textContent = dot[i + 6].textContent - 1
+                            }
+                            if (dot[6].textContent == 0 && dot[7].textContent == 0 && dot[8].textContent == 0) {
+                                stageText[2].classList.add("done")
+                            }
+                        }
+
+                        currentState.appendChild(lastCard)
 
                     })
                 })
@@ -173,7 +199,8 @@ images.forEach((x, i) => {
     })
 })
 
-
-
+// if (dot[i + 6].classList.contains("green")) {
+//     lastCard.style.background = `url(./assets/MythicCards/green/green${id}.png)`
+// }
 
 
