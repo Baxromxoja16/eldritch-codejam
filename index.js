@@ -187,20 +187,14 @@ images.forEach((x, i) => {
                             }
                             if (dot[6].textContent == 0 && dot[7].textContent == 0 && dot[8].textContent == 0) {
                                 stageText[2].classList.add("done")
+                                deck.style.display = "none"
                             }
                         }
-
                         currentState.appendChild(lastCard)
-
                     })
                 })
             })
         })
     })
 })
-
-// if (dot[i + 6].classList.contains("green")) {
-//     lastCard.style.background = `url(./assets/MythicCards/green/green${id}.png)`
-// }
-
 
