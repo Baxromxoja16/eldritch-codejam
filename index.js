@@ -164,6 +164,8 @@ images.forEach((x, i) => {
                     deck.addEventListener('click', () => {
                         i = Math.floor(Math.random() * 3)
                         
+                        // add your code
+
                     })
                 })
             })
