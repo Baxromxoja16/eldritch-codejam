@@ -1,0 +1,143 @@
+body {
+    background: url(./home.png) no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+
+
+.start_images {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.start_images img {
+    width: 45%;
+    transition: .5s;
+    box-sizing: border-box;
+}
+
+.border {
+    border: 2px solid red;
+}
+
+.start_images img:hover {
+    transform: scale(1.1);
+}
+
+.diff-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 15%;
+    margin: auto;
+    gap: 10px;
+}
+
+.diff-container .diff {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    border: 2px solid rgb(255, 174, 174);
+    color: antiquewhite;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.diff-container .active {
+    background: red;
+}
+
+.deck-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    min-width: 30%;
+}
+
+.deck-container .shuffle-button {
+    background-color: red;
+    border: 2px solid purple;
+    color: purple;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+
+.deck-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    min-width: 30%;
+}
+
+.deck-container .current-state {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 30%;
+}
+
+.deck-container .deck,
+.deck-container .last-card {
+    background-size: cover;
+    height: 190px;
+    width: 130px;
+}
+
+.deck-container .deck {
+    cursor: pointer;
+}
+
+.deck-container .current-state .stage-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.deck-container .current-state .stage-container .stage-text {
+    color: purple;
+}
+
+.deck-container .current-state .stage-container .dots-container {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.deck-container .current-state .stage-container .dot.green {
+    background-color: green;
+}
+
+.deck-container .current-state .stage-container .dot.brown {
+    background-color: brown;
+}
+
+.deck-container .current-state .stage-container .dot.blue {
+    background-color: blue;
+}
+
+.deck-container .current-state .stage-container .dot {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+}
+
+.d-none {
+    display: none;
+}
