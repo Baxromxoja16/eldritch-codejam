@@ -147,11 +147,18 @@ images.forEach((x, i) => {
                         const lastCard = document.querySelector('.last-card');
                         const stageText = document.querySelectorAll('.stage-text');
                         i = Math.floor(Math.random() * 3)
-                        id = Math.floor(Math.random() + 1) * 12
                         const dot = document.querySelectorAll('.dot');
 
-                        console.log();
                         const names = dot[i].getAttribute("class").split(" ")[1]
+
+                        if (names === "blue") {
+                            id = Math.floor(Math.random() * 11) + 1
+                        } else if (names === "brown") {
+                            id = Math.floor(Math.random() * 20) + 1
+                        } else if (names === "green") {
+                            id = Math.floor(Math.random() * 17) + 1
+                        }
+
                         lastCard.style.background = `url(./assets/MythicCards/${names}/${names}${id}.png)`
                         lastCard.style.backgroundSize = "cover"
 
